@@ -1,15 +1,16 @@
 import {
   ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
+  // SignInButton,
+  // SignedIn,
+  // SignedOut,
+  // UserButton,
 } from "@clerk/nextjs";
 import "./globals.css";
 import React from "react";
 import { Inter, Space_Grotesk } from "next/font/google";
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/context/ThemeProvider";
+// import Navbar from "@/components/shared/navbar/Navbar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -52,14 +53,14 @@ export default function RootLayout({
       <html lang="en">
         <body className={`${inter.variable} ${Spacegrotesk.variable}`}>
           <ThemeProvider>
-            <header>
+            {/* <header>
               <SignedOut>
                 <SignInButton />
               </SignedOut>
               <SignedIn>
                 <UserButton />
               </SignedIn>
-            </header>
+            </header> */}
             <main>{children}</main>
           </ThemeProvider>
         </body>

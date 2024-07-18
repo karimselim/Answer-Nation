@@ -15,24 +15,16 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const handleThemeChange = () => {
     if (mode === "dark") {
       setMode("light");
-      if (document.documentElement.classList.contains("dark")) {
-        document.documentElement.classList.remove("dark");
-      }
-
       document.documentElement.classList.add("light");
-    } else if (mode === "light") {
+    } else {
       setMode("dark");
-      if (document.documentElement.classList.contains("")) {
-        document.documentElement.classList.remove("light");
-      }
-
       document.documentElement.classList.add("dark");
     }
   };
 
   useEffect(() => {
     handleThemeChange();
-  }, [mode]);
+  }, []);
 
   return (
     <ThemeContext.Provider value={{ mode, setMode }}>

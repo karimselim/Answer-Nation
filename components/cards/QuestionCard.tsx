@@ -53,9 +53,10 @@ const QuestionCard = ({
       <div className="flex-between mt-6 w-full flex-wrap gap-3">
         <Metric
           imgUrl="/assets/icons/avatar.svg"
-          alt="author"
-          value={upvotes / 2}
-          title="Votes"
+          alt="user"
+          value={author.name}
+          title=" - asked 1 hour ago"
+          href=""
           textStyle="small-medium text-dark400_light800"
         />
         <Metric

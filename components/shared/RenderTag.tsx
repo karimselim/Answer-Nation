@@ -3,10 +3,10 @@ import React from "react";
 import { Badge } from "../ui/badge";
 
 interface props {
-  _id: number;
+  _id: string;
   name: string;
-  totalQuestions: number;
-  showCount: boolean; // default: true  | false: hide count  | undefined: hide count and show totalQuestions  | number: show specific count  | string: show specific count and append a unit  | function: show specific count based on a function argument  | JSX.Element: show specific count and append a unit with JSX content  | React.FC: show specific count and append a unit with a custom component  | React.ReactNode: show specific count and append a unit with a custom ReactNode content  | React.ReactChild: show specific count and append a unit with a custom ReactChild content  | React.ReactFragment: show specific count and append a unit with a custom ReactFragment content  | React.Suspense: show specific count and append a unit with a custom Suspense content  | React.Lazy: show specific count and append a
+  totalQuestions?: number;
+  showCount?: boolean; // default: true  | false: hide count  | undefined: hide count and show totalQuestions  | number: show specific count  | string: show specific count and append a unit  | function: show specific count based on a function argument  | JSX.Element: show specific count and append a unit with JSX content  | React.FC: show specific count and append a unit with a custom component  | React.ReactNode: show specific count and append a unit with a custom ReactNode content  | React.ReactChild: show specific count and append a unit with a custom ReactChild content  | React.ReactFragment: show specific count and append a unit with a custom ReactFragment content  | React.Suspense: show specific count and append a unit with a custom Suspense content  | React.Lazy: show specific count and append a
 }
 
 const RenderTag = ({ _id, name, totalQuestions, showCount }: props) => {

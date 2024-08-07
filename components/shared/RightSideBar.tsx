@@ -4,27 +4,27 @@ import React from "react";
 import RenderTag from "./RenderTag";
 
 const hotQuestions = [
-  { _id: 1, title: "NextRouter was not mounted Next.JS" },
+  { _id: "1", title: "NextRouter was not mounted Next.JS" },
   {
-    _id: 2,
+    _id: "2",
     title:
       "Best practices for data fetching in a Next.js application with Server-Side Rendering (SSR)?",
   },
-  { _id: 3, title: "Cascading Deletes in SQLAlchemy?chevron right" },
+  { _id: "3", title: "Cascading Deletes in SQLAlchemy?chevron right" },
   {
-    _id: 4,
+    _id: "4",
     title:
       "chevron rightWhat are effective time management strategies specifically tailored for coding and programming tasks?",
   },
-  { _id: 5, title: "checking if this app even works" },
+  { _id: "5", title: "checking if this app even works" },
 ];
 
 const popularTags = [
-  { _id: 1, name: "javascript", totalQuestions: 1 },
-  { _id: 2, name: "react", totalQuestions: 2 },
-  { _id: 3, name: "next", totalQuestions: 1 },
-  { _id: 4, name: "vue", totalQuestions: 2 },
-  { _id: 5, name: "redux", totalQuestions: 3 },
+  { _id: "1", name: "javascript", totalQuestions: 1 },
+  { _id: "2", name: "react", totalQuestions: 2 },
+  { _id: "3", name: "next", totalQuestions: 1 },
+  { _id: "4", name: "vue", totalQuestions: 2 },
+  { _id: "5", name: "redux", totalQuestions: 3 },
 ];
 
 const RightSideBar = () => {

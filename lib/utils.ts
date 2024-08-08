@@ -25,3 +25,13 @@ export const getTimestamp = (createdAt: Date): string => {
     return `${minutesAgo} minute${minutesAgo > 1 ? "s" : ""} ago`;
   return `${secondsAgo} second${secondsAgo > 1 ? "s" : ""} ago`;
 };
+
+export const formatLargeNumber = (num: number): string => {
+  if (num >= 1000000) {
+    return (num / 1000000).toFixed(1) + "M"; // For millions
+  } else if (num >= 1000) {
+    return (num / 1000).toFixed(1) + "k"; // For thousands
+  } else {
+    return num.toString(); // For numbers less than 1,000
+  }
+};

@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import RenderTag from "../shared/RenderTag";
 import Metric from "../shared/Metric";
-import { getTimestamp } from "@/lib/utils";
+import { formatLargeNumber, getTimestamp } from "@/lib/utils";
 
 interface QuestionProps {
   id: string;
@@ -56,28 +56,28 @@ const QuestionCard = ({
           imgUrl="/assets/icons/avatar.svg"
           alt="user"
           value={author.name}
-          title=" - asked 1 hour ago"
+          title={` - aksed ${getTimestamp(createdAt)}`}
           href={`/profile/${author._id}`}
           textStyle="small-medium text-dark400_light700"
         />
         <Metric
           imgUrl="/assets/icons/like.svg"
           alt="upvotes"
-          value={upvotes}
+          value={formatLargeNumber(upvotes)}
           title="Votes"
           textStyle="small-medium text-dark400_light800"
         />
         <Metric
           imgUrl="/assets/icons/message.svg"
           alt="upvotes"
-          value={answers.length}
+          value={formatLargeNumber(answers.length)}
           title="Answers"
           textStyle="small-medium text-dark400_light800"
         />
         <Metric
           imgUrl="/assets/icons/eye.svg"
           alt="upvotes"
-          value={views}
+          value={formatLargeNumber(views)}
           title="Views"
           textStyle="small-medium text-dark400_light800"
         />

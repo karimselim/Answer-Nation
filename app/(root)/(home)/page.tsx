@@ -7,6 +7,8 @@ import React from "react";
 import LocalSearchBar from "@/components/shared/search/LocalSearchBar";
 import NoResult from "@/components/shared/NoResult";
 import QuestionCard from "@/components/cards/QuestionCard";
+import Filter from "@/components/shared/Filter";
+import { HomePageFilters } from "@/constants/filters";
 
 const questions = [
   {
@@ -68,6 +70,11 @@ const Home = () => {
           imgSrc="/assets/icons/search.svg"
           placeholder="Search for questions"
           otherClasses="flex-1"
+        />
+        <Filter
+          filters={HomePageFilters}
+          otherClasses="min-h-[56px] sm:min-w-[170px]"
+          containerClasses="hideen max-md:flex"
         />
       </div>
 

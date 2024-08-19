@@ -9,6 +9,7 @@ import NoResult from "@/components/shared/NoResult";
 import QuestionCard from "@/components/cards/QuestionCard";
 import Filter from "@/components/shared/Filter";
 import { HomePageFilters } from "@/constants/filters";
+import HomeFilters from "@/components/home/HomeFilters";
 
 const questions = [
   {
@@ -77,6 +78,7 @@ const Home = () => {
           containerClasses="hideen max-md:flex"
         />
       </div>
+      <HomeFilters />
 
       <div className="mt-10 flex w-full flex-col gap-6">
         {questions.length > 0 ? (

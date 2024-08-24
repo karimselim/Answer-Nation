@@ -1,7 +1,7 @@
 /* eslint-disable spaced-comment */
 "use client";
 
-import { useRef } from "react";
+import React, { useRef } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -38,6 +38,36 @@ const Questions = () => {
     // ✅ This will be type-safe and validated.
     console.log(values);
   }
+
+  const handleInputKeyDown = (
+    e: React.KeyboardEvent<HTMLInputElement>,
+    field: any
+  ) => {
+    if (e.key === "Enter" && field.name === "tags") {
+      e.preventDefault();
+
+      const tagInput = e.target as HTMLInputElement;
+      const tagValue = tagInput.value.trim();
+
+      if (tagValue !== "") {
+        if (tagValue.length > 15) {
+          return form.setError("tags", {
+            type: "required",
+            message: "Tag must be less than 15 characters",
+          });
+        }
+
+        if (!field.value.includes(tagValue as never)) {
+          form.setValue("tags", [...field.value, tagValue]);
+          tagInput.value = "";
+          form.clearErrors("tags");
+        }
+      } else {
+        form.trigger();
+      }
+    }
+  };
+
   return (
     <Form {...form}>
       <form
@@ -81,9 +111,9 @@ const Questions = () => {
                   apiKey={process.env.NEXT_PUBLIC_TINY_EDITOR_API_KEY}
                   //@ts-ignore
                   onInit={(_evt, editor) => (editorRef.current = editor)}
-                  initialValue="<p>This is the initial content of the editor.</p>"
+                  initialValue=""
                   init={{
-                    height: 500,
+                    height: 350,
                     menubar: false,
                     plugins: [
                       "advlist",
@@ -101,17 +131,17 @@ const Questions = () => {
                       "insertdatetime",
                       "media",
                       "table",
-                      "code",
+                      "codesample",
                       "help",
                       "wordcount",
                     ],
                     toolbar:
                       "undo redo | blocks | " +
-                      "bold italic forecolor | alignleft aligncenter " +
+                      "codesample | bold italic forecolor | alignleft aligncenter " +
                       "alignright alignjustify | bullist numlist outdent indent | " +
                       "removeformat | help",
                     content_style:
-                      "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+                      "body { font-family:Helvetica,Arial,sans-serif; font-size:16px }",
                   }}
                 />
               </FormControl>
@@ -135,7 +165,7 @@ const Questions = () => {
                 <Input
                   className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
                   placeholder="Add tags..."
-                  {...field}
+                  onKeyDown={(e) => handleInputKeyDown(e, field)}
                 />
               </FormControl>
               <FormDescription className="body-regular mt-2.5 text-light-500">

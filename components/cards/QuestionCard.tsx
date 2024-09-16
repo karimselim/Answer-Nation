@@ -5,7 +5,7 @@ import Metric from "../shared/Metric";
 import { formatLargeNumber, getTimestamp } from "@/lib/utils";
 
 interface QuestionProps {
-  id: string;
+  _id: string;
   title: string;
   tags: {
     _id: string;
@@ -23,7 +23,7 @@ interface QuestionProps {
 }
 
 const QuestionCard = ({
-  id,
+  _id,
   title,
   tags,
   author,
@@ -39,7 +39,7 @@ const QuestionCard = ({
           <span className="subtle-regular text-dark400_light700 line-clamp-1 flex sm:hidden">
             {getTimestamp(createdAt)} karim
           </span>
-          <Link href={`/question/${id}`}>
+          <Link href={`/question/${_id}`}>
             <h3 className="sm:h3-semibold base-semibold text-dark200_light900 line-clamp-1 flex-1">
               {title}
             </h3>
@@ -55,9 +55,9 @@ const QuestionCard = ({
         <Metric
           imgUrl="/assets/icons/avatar.svg"
           alt="user"
-          value={author.name}
+          value={author?.name}
           title={` - aksed ${getTimestamp(createdAt)}`}
-          href={`/profile/${author._id}`}
+          href={`/profile/${author?._id}`}
           textStyle="small-medium text-dark400_light700"
         />
         <Metric

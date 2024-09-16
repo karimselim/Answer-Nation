@@ -20,14 +20,14 @@ const UserSchema = new Schema({
   name: { type: String, required: true },
   username: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
-  password: { type: String }, // Optional field, could be undefined
-  bio: { type: String }, // Optional field
+  password: { type: String },
+  bio: { type: String },
   picture: { type: String, required: true },
-  location: { type: String }, // Optional field
-  portfolioWebsite: { type: String }, // Optional field
-  reputation: { type: Number, default: 0 }, // Optional with default value
-  saved: [{ type: Schema.Types.ObjectId, ref: "Question" }], // Array of ObjectId references
-  joinedAt: { type: Date, default: Date.now }, // Default to current date
+  location: { type: String },
+  portfolioWebsite: { type: String },
+  reputation: { type: Number, default: 0 },
+  saved: [{ type: Schema.Types.ObjectId, ref: "Question" }],
+  joinedAt: { type: Date, default: Date.now },
 });
 
 const User = models.User || model("User", UserSchema);

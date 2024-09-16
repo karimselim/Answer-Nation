@@ -10,49 +10,16 @@ import QuestionCard from "@/components/cards/QuestionCard";
 import Filter from "@/components/shared/Filter";
 import { HomePageFilters } from "@/constants/filters";
 import HomeFilters from "@/components/home/HomeFilters";
+import { getQuestions } from "@/lib/actions/question.action";
 
-const questions = [
-  {
-    _id: "1", // Changed to string
-    title: "Cascading Deletes in SQLAlchemy?",
-    tags: [
-      { _id: "1", name: "python" },
-      { _id: "2", name: "sql" },
-    ],
-    author: {
-      _id: "1", // Assuming author has an ID
-      name: "John",
-      picture: "", // Or provide a default picture
-    },
-    upvotes: 10,
-    views: 100,
-    answers: [
-      // Replace with actual answer objects
-    ],
-    createdAt: new Date("2024-08-08T20:21:00"), // Corrected date format
-  },
-  {
-    _id: "2", // Changed to string
-    title: "How to center a div?",
-    tags: [
-      { _id: "1", name: "python" },
-      { _id: "2", name: "sql" },
-    ],
-    author: {
-      _id: "2", // Assuming author has an ID
-      name: "John",
-      picture: "", // Or provide a default picture
-    },
-    upvotes: 10,
-    views: 100,
-    answers: [
-      // Replace with actual answer objects
-    ],
-    createdAt: new Date("2021-09-01T12:00:00"), // Corrected date format
-  },
-];
+console.log("connecting");
 
-const Home = () => {
+console.log();
+
+const Home = async () => {
+  const result = await getQuestions({});
+
+  console.log(result.questions);
   return (
     <>
       <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
@@ -81,12 +48,12 @@ const Home = () => {
       <HomeFilters />
 
       <div className="mt-10 flex w-full flex-col gap-6">
-        {questions.length > 0 ? (
-          questions.map((question) => {
+        {result.questions.length > 0 ? (
+          result.questions.map((question) => {
             return (
               <QuestionCard
                 key={question._id}
-                id={question._id}
+                _id={question._id}
                 title={question.title}
                 tags={question.tags}
                 author={question.author}

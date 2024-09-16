@@ -45,6 +45,8 @@ const Questions = ({ mongoUserId }: props) => {
     },
   });
 
+  console.log("karimselim", JSON.parse(mongoUserId));
+
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof QuestionsSchema>) {
     setIsSubmitting(true);
@@ -54,8 +56,8 @@ const Questions = ({ mongoUserId }: props) => {
         content: values.explanation,
         tags: values.tags,
         author: JSON.parse(mongoUserId),
+        path: pathname,
       });
-
       router.push("/");
     } catch (error) {
       // selim

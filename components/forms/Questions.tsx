@@ -45,8 +45,6 @@ const Questions = ({ mongoUserId }: props) => {
     },
   });
 
-  console.log("karimselim", JSON.parse(mongoUserId));
-
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof QuestionsSchema>) {
     setIsSubmitting(true);
